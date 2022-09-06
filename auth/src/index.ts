@@ -5,6 +5,11 @@ const app = express()
 
 app.use(json())
 
-app.listen(3000, () => {
-    console.log('Listening on port 3000!')
+app.get('/', (req, res) => {
+    res.json({ message: "ok" })
+})
+
+app.listen(4000, () => {
+    console.log("asd")
+    console.log('Listening on port 4000 !!!')
 })
