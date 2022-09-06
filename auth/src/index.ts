@@ -5,11 +5,14 @@ const app = express()
 
 app.use(json())
 
-app.get('/', (req, res) => {
-    res.json({ message: "ok" })
-})
+app.get("/", (req, res) => {
+    res.send("Yaser Home 1");
+  });
+app.get("/api/users/currentuser", (req, res) => {
+    res.send("Hi there!");
+  });
 
-app.listen(4000, () => {
-    console.log("asd")
-    console.log('Listening on port 4000 !!!')
+app.listen(3000, () => {
+    console.log("asdsds")
+    console.log('Listening on port 3000 !!')
 })
