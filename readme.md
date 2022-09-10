@@ -19,9 +19,24 @@ tsc --init #Create tsconfig.json file
 
 2- [Install Ingress Nginx](https://kubernetes.github.io/ingress-nginx/deploy/)
 
+-  For **Desktop Docker**
+
 ```bash
 # Get last version based on kubernetes version
 kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.3.0/deploy/static/provider/cloud/deploy.yaml
+
+#Update /etc/hosts
+127.0.0.1 name.com
+```
+- For [**Minikube**](https://kubernetes.io/docs/tasks/access-application-cluster/ingress-minikube/)
+```bash
+minikube addons enable ingress
+
+# run below command to get ip
+minikube ip
+# 192.168.49.2
+#Update /etc/hosts with upper ip
+192.168.49.2 name.com
 ```
 
 3- [Install Skaffold](https://skaffold.dev/docs/install/)
