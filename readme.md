@@ -75,3 +75,22 @@ kubectl rollout restart deployment [name-depl]
 ```bash
 curl ipconfig.io/country
 ```
+
+
+
+# Start 
+
+```bash
+minikube start
+skaffold dev
+```
+
+## Create Containers from Local
+```bash
+1: Inspect image from docker image
+2: Copy RepoDigests address
+3: Paste into Image field of depl
+# Check auth-mongo-depl.yalm
+```
+
+
