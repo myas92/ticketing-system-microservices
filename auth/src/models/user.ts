@@ -20,7 +20,7 @@ interface UserDoc extends mongoose.Document {
     password: string
 }
 const userSchema = new mongoose.Schema({
-    emial: {
+    email: {
         type: String,
         required: true
     },
@@ -35,12 +35,7 @@ userSchema.statics.build = (attrs: UserAttrs) => {
 }
 
 const User = mongoose.model<UserDoc, UserModel>('User', userSchema);
-
-const user = User.build({
-    email: 'asdasd',
-    password: 'asdasdasd'
-})
-
+export { User }
 
 // این روش خیلی خوب نیست
 // const User = mongoose.model('User', userSchema);
