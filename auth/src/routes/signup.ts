@@ -42,7 +42,8 @@ router.post(
 
     const user = User.build({
       email,
-      password
+      password,
+      
     })
     console.log(user)
     await user.save();
