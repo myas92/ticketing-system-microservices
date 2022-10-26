@@ -94,3 +94,28 @@ skaffold dev
 ```
 
 
+
+
+
+## Secret
+1- Create Secret Key
+```
+kubectl create secret generic jwt-secret --from-literal=JWT_key=asdf
+```
+2- List of secret
+```
+kubectl get secrets
+```
+30 example in auth-depl.yaml
+```
+containers:
+  - name: auth
+    image: yaserahmadi/auth
+    env:
+     - name: JWT_KEY
+       valueFrom:
+        secretKeyRef:
+         name: jwt-secret
+         key: JWT_KEY
+```
+
