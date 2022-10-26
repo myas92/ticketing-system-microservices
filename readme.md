@@ -118,4 +118,4 @@ containers:
          name: jwt-secret
          key: JWT_KEY
 ```
-
+[jwt secret solution](https://stackoverflow.com/questions/66328425/jwt-argument-of-type-string-undefined-is-not-assignable-to-parameter-of-typ)
