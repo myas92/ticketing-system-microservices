@@ -119,3 +119,18 @@ containers:
          key: JWT_KEY
 ```
 [jwt secret solution](https://stackoverflow.com/questions/66328425/jwt-argument-of-type-string-undefined-is-not-assignable-to-parameter-of-typ)
+
+
+## Transform Output of Mongoose Model
+```js
+{
+    toJSON:{
+        transform(doc, ret){
+            ret.id = ret._id,
+            delete ret._id,
+            delete ret.password,
+            delete ret.__v
+        }
+    }
+}
+```
