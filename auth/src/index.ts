@@ -18,8 +18,7 @@ app.set('trust proxy', true); // ترافیک از طریق پروکسی این�
 app.use(json());
 app.use(cookieSession({
   signed: false, // Because JWT is signed with SHA-256
-  secure: true // visited user the app HTTPS connection
-
+  secure: process.env.HTTPS == "true" ? true : false // visited user the app HTTPS connection
 }))
 
 app.use(currentUserRouter);
@@ -47,7 +46,7 @@ const start = async () => {
       await mongoose.connect('mongodb://localhost:27017/auth');
 
     }
-    console.log('Connected tao MongoDb')
+    console.log('Connected to MongoDb')
   } catch (error) {
     console.log(error)
   }
