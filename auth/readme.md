@@ -14,3 +14,18 @@ tsc --init #Create tsconfig.json file
 
 This has been lightly reworked to handle async rather than generators. based on [Express handling errors](http://expressjs.com/en/guide/error-handling.html) for async function you must pass error to the `next()`
 
+
+
+## Modify a type
+```js
+// req.currentUser
+declare global {
+    namespace Express {
+        interface Request {
+            currentUser?: UserPayload;
+        }
+    }
+}
+const payload = jwt.verify(token, salt) as UserPayload
+req.currentUser = payload;
+```
