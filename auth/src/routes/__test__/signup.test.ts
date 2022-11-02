@@ -11,21 +11,21 @@ it('returns a 201 on successful signup', async () => {
 }
 
 )
-it('returns a  400 with an invalid email', async () => {
+it('returns a 400 with an invalid email', async () => {
     await request(app).post('/api/users/signup').send({
         email: "test",
         password: '123123123'
     }).expect(400)
 })
 
-it('returns a  400 with an invalid password', async () => {
+it('returns a 400 with an invalid password', async () => {
     await request(app).post('/api/users/signup').send({
         email: "test@test.com",
         password: 'a'
     }).expect(400)
 })
 
-it('returns a  400 with missing email and password', async () => {
+it('returns a 400 with missing email and password', async () => {
     await request(app).post('/api/users/signup').send({
         email: "test@test.com",
     }).expect(400)
