@@ -1,3 +1,5 @@
+// inclued this path to the jest config in package.json
+
 import { MongoMemoryServer } from 'mongodb-memory-server';
 import mongoose from 'mongoose';
 
