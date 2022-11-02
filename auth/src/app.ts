@@ -17,7 +17,7 @@ app.set('trust proxy', true); // ترافیک از طریق پروکسی این�
 app.use(json());
 app.use(cookieSession({
     signed: false, // Because JWT is signed with SHA-256
-    secure: process.env.HTTPS == "true" ? true : false // visited user the app HTTPS connection
+    secure: process.env.NODE_ENV=='dev' || 'test' ? false : true // visited user the app HTTPS connection
 }))
 
 app.use(currentUserRouter);

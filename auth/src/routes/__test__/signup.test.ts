@@ -40,3 +40,12 @@ it('disallows dublicate email', async () => {
         password: '123123123'
     }).expect(201)
 })
+
+it('sets cookie after successful sign in', async () => {
+    const response = await request(app).post('/api/users/signup').send({
+        email: "test@test.com",
+        password: '123123123'
+    }).expect(201);
+
+    expect(response.get('Set-Cookie')).toBeDefined
+})

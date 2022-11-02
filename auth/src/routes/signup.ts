@@ -18,7 +18,6 @@ router.post(
   ],
   validateRequest,
   async (req: Request, res: Response) => {
-    console.log('--- singup API ---')
     const { email, password } = req.body;
     // Throw a error for databse connection
     // throw new DatabaseConnectionError()
