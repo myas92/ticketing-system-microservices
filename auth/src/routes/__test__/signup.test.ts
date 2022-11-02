@@ -33,3 +33,10 @@ it('returns a 400 with missing email and password', async () => {
         password: '1234567'
     }).expect(400)
 })
+
+it('disallows dublicate email', async () => {
+    await request(app).post('/api/users/signup').send({
+        email: "test@test.com",
+        password: '123123123'
+    }).expect(201)
+})
