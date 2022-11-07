@@ -29,3 +29,12 @@ declare global {
 const payload = jwt.verify(token, salt) as UserPayload
 req.currentUser = payload;
 ```
+
+
+## Declare a global function for test
+```js
+// test/setup.ts
+declare global {
+    function signin(): Promise<string[]>
+}
+```

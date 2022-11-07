@@ -144,11 +144,3 @@ npm i --save-dev ts-jest
 npm i --save-dev supertest
 npm i --save-dev mongodb-memory-server
 ```
-
-## Declare a global function
-```js
-// test/setup.ts
-declare global {
-    function signin(): Promise<string[]>
-}
-```
