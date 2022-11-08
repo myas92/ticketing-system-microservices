@@ -135,12 +135,25 @@ containers:
 }
 ```
 
-## Test Modules
-```bash
-npm i --save-dev @types/jest
-npm i --save-dev @types/supertest
-npm i --save-dev jest
-npm i --save-dev ts-jest
-npm i --save-dev supertest
-npm i --save-dev mongodb-memory-server
+
+
+
+## Error In minikube
+To connect your Docker CLI to the docker daemon inside the VM, (just current terminal)
+```
+eval $(minikube docker-env)
+```
+Pull to mongo in minbikube docker if you have error (can not pull the image yaserahmadi/mongo)
+```
+git pull yaserahmadi/mongo
+```
+
+## Check Ingress status befor run the project
+```
+kubectl get pods -n ingress-nginx
+````
+If the there is a error about `ImagePullBackOff` in `ingress-nginx-controller`, pull image in minikube docker like above example
+```
+eval $(minikube docker-env)
+docker pull k8s.gcr.io/ingress-nginx/controller:v1.2.1@sha256:5516d103a9c2ecc4f026efbd4b40662ce22dc1f824fb129ed121460aaa5c47f8
 ```

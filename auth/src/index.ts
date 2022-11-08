@@ -8,12 +8,12 @@ const start = async () => {
     if (!process.env.JWT_KEY) {
       throw new Error('JWT_KEY must be defined')
     }
-    if (process.env.ENV == 'kuber') {
-      console.log("----------------------")
-      await mongoose.connect('mongodb://auth-mongo-srv:27017/auth');
-    }
-    else {
+     if(process.env.ENV=='dev') {
       await mongoose.connect('mongodb://localhost:27017/auth');
+
+    }
+    else{
+      await mongoose.connect('mongodb://auth-mongo-srv:27017/auth');
 
     }
     console.log('Connected to MongoDb')

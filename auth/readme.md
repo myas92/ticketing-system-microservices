@@ -38,3 +38,13 @@ declare global {
     function signin(): Promise<string[]>
 }
 ```
+
+## Test Modules
+```bash
+npm i --save-dev @types/jest
+npm i --save-dev @types/supertest
+npm i --save-dev jest
+npm i --save-dev ts-jest
+npm i --save-dev supertest
+npm i --save-dev mongodb-memory-server
+```
