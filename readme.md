@@ -157,3 +157,23 @@ If the there is a error about `ImagePullBackOff` in `ingress-nginx-controller`, 
 eval $(minikube docker-env)
 docker pull k8s.gcr.io/ingress-nginx/controller:v1.2.1@sha256:5516d103a9c2ecc4f026efbd4b40662ce22dc1f824fb129ed121460aaa5c47f8
 ```
+## Define Environment variable in Kubber
+```
+kubectl create secret generic jwt-secret --from-literal=JWT_KEY=asdf
+kubectl create secret generic env --from-literal=NODE_ENV=KUBER
+```
+update `auth-depl.yaml` file
+
+```
+env:
+- name: JWT_KEY
+  valueFrom:
+  secretKeyRef:
+    name: jwt-secret
+    key: JWT_KEY
+- name: NODE_ENV
+  valueFrom:
+  secretKeyRef:
+    name: env
+    key: NODE_ENV
+```
