@@ -6,6 +6,8 @@
 npm install react
 npm install react-dom
 npm install next
+npm install axios
+npm install bootstrap
 ```
 
 ## Docker Commands
