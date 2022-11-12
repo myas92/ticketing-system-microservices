@@ -1,11 +1,14 @@
 import axios from "axios";
 import { useState } from "react";
-export default ({ url, method, body }) => {
+export default ({ url, method, body, onSuccess }) => {
   const [errors, setErrors] = useState(null);
   const doRequest = async () => {
     try {
       setErrors(null);// باید وضعیت قبلی خطا را پاک کرد در صورت ارسال درخواست جدید
       const response = await axios[method](url, body);
+      if(onSuccess){
+        onSuccess(response.data)
+      }
       return response.data;
     } catch (err) {
       setErrors(
