@@ -177,3 +177,23 @@ env:
     name: env
     key: NODE_ENV
 ```
+
+## Share Common Codes between Microservices
+With NPM, create a  public organization add put the code in this organization
+
+1- Select a valid name for package
+```
+@orginzation-name/package-name
+```
+2- login 
+```
+npm login
+```
+3- publish module
+```
+npm publish --access public
+```
+4- Automatically update version before publishing
+```
+npm version patch
+```
