@@ -19,6 +19,10 @@ app.use(cookieSession({
     secure: process.env.NODE_ENV=='dev' || 'test' ? false : true // visited user the app HTTPS connection
 }))
 
+app.use(currentUserRouter);
+app.use(signinRouter);
+app.use(signoutRouter);
+app.use(signupRouter);
 
 app.all('*', async () => {
     throw new NotFoundError()
