@@ -3,7 +3,7 @@ import express from "express";
 import 'express-async-errors'
 import { json } from "body-parser";
 import cookieSession from 'cookie-session'
-import { errorHandler, NotFoundError } from "@myasticketing/common";
+import { errorHandler, NotFoundError, currentUser } from "@myasticketing/common";
 
 import { createTicketRouter } from "./routes/new";
 
@@ -14,8 +14,10 @@ app.set('trust proxy', true); // ترافیک از طریق پروکسی این�
 app.use(json());
 app.use(cookieSession({
     signed: false, // Because JWT is signed with SHA-256
-    secure: process.env.NODE_ENV=='dev' || 'test' ? false : true // visited user the app HTTPS connection
+    secure: process.env.NODE_ENV == 'dev' || 'test' ? false : true // visited user the app HTTPS connection
 }))
+
+app.use(currentUser);
 
 app.use(createTicketRouter);
 
