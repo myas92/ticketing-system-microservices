@@ -5,10 +5,8 @@ import { json } from "body-parser";
 import cookieSession from 'cookie-session'
 import { errorHandler, NotFoundError } from "@myasticketing/common";
 
-import { currentUserRouter } from "./routes/current-user";
-import { signinRouter } from "./routes/signin";
-import { signoutRouter } from "./routes/signout";
-import { signupRouter } from "./routes/signup";
+import { createTicketRouter } from "./routes/new";
+
 config()
 const app = express();
 // بصورت پیش فرض وقتی درخواست از با اچ تی تی پی اس بیاد اکسپرس ردش میکنه
@@ -19,10 +17,8 @@ app.use(cookieSession({
     secure: process.env.NODE_ENV=='dev' || 'test' ? false : true // visited user the app HTTPS connection
 }))
 
-app.use(currentUserRouter);
-app.use(signinRouter);
-app.use(signoutRouter);
-app.use(signupRouter);
+app.use(createTicketRouter);
+
 
 app.all('*', async () => {
     throw new NotFoundError()
