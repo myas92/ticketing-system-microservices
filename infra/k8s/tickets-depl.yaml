@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tickets-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: tickets
+  template:
+    metadata:
+      labels:
+        app: tickets
+    spec:
+      containers:
+        - name: tickets
+          image: yaserahmadi/tickets
+          env:
+           - name: JWT_KEY
+             valueFrom:
+              secretKeyRef:
+               name: jwt-secret
+               key: JWT_KEY
+           - name: NODE_ENV
+             valueFrom:
+              secretKeyRef:
+               name: env
+               key: NODE_ENV
+           - name: MONGO_URI
+             value: 'mongodb://tickets-mongo-srv:27017/tickets'
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: tickets-srv
+spec:
+  selector:
+    app: tickets
+  ports:
+    - name: tickets
+      protocol: TCP
+      port: 3000
+      targetPort: 3000
