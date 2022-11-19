@@ -26,6 +26,8 @@ spec:
               secretKeyRef:
                name: env
                key: NODE_ENV
+           - name: MONGO_URI
+             value: 'mongodb://auth-mongo-srv:27017/auth'
 
 ---
 apiVersion: v1
