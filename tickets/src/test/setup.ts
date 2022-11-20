@@ -1,15 +1,18 @@
 import { MongoMemoryServer } from 'mongodb-memory-server';
 import mongoose from 'mongoose';
+import jwt from 'jsonwebtoken'
 import { app } from '../app';
 import request from 'supertest';
 
 declare global {
-    function signin(): Promise<string[]>
+    function signin(): string[];
 }
 
 
 let mongo: any;
 beforeAll(async () => {
+    process.env.JWT = 'asdasdasd';
+    process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
     mongo = await MongoMemoryServer.create();
     const mongoUri = mongo.getUri();
     await mongoose.connect(mongoUri, {
@@ -30,16 +33,28 @@ afterAll(async () => {
     await mongoose.connection.close();
 });
 
-global.signin = async () => {
-    const email = 'test@test.com';
-    const password = 'password';
-    const authResponse = await request(app)
-        .post('/api/users/signup')
-        .send({
-            email,
-            password
-        })
-        .expect(201);
-    const cookie = authResponse.get('Set-Cookie');
-    return cookie;
+global.signin = () => {
+    // Build a JWT payload {id, email}
+
+    const payload = {
+        id: 'adq3242rsfq34e',
+        email: 'test@test.com'
+    }
+
+    // Create the JWT token!
+
+    const token = jwt.sign(payload, process.env.JWT_KEY!)
+    // Build session object {jwt: MY_JWT}
+
+    const session = { jwt: token }
+    // Turn that session into JSON
+
+    const sessionJSON = JSON.stringify(session)
+    // Take JSON and encode as base64
+
+    const base64 = Buffer.from(sessionJSON).toString('base64')
+
+    // Return a string thats the coockie with the encoded data
+
+    return [`session=${base64}`]
 }
