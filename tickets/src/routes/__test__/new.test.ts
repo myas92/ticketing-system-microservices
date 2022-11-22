@@ -17,23 +17,32 @@ it('Returns a status code other than 401 if the user signed in ', async () => {
 })
 it('Returns an error if an invalid title is provided', async () => {
 
-    await request(app).post('/api/tickets').set('Cookie', global.signin()).send({
-        title: "",
-        price: 100
-    }).expect(400)
-    await request(app).post('/api/tickets').set('Cookie', global.signin()).send({
-        title: "",
-    }).expect(400)
+    await request(app).post('/api/tickets').set('Cookie', global.signin())
+        .send({
+            title: "",
+            price: 100
+        }).expect(400)
+    await request(app).post('/api/tickets').set('Cookie', global.signin())
+        .send({
+            title: "",
+        }).expect(400)
 })
 it('Returns an error if an invelid price is provided', async () => {
-    await request(app).post('/api/tickets').set('Cookie', global.signin()).send({
-        title: "my title",
-        price: -100
-    }).expect(400)
-    await request(app).post('/api/tickets').set('Cookie', global.signin()).send({
-        title: "my title",
-    }).expect(400)
+    await request(app).post('/api/tickets').set('Cookie', global.signin())
+        .send({
+            title: "my title",
+            price: -100
+        }).expect(400)
+    await request(app).post('/api/tickets').set('Cookie', global.signin())
+        .send({
+            title: "my title",
+        }).expect(400)
 })
 it('Create a tickets with valid inputs', async () => {
-
+    await request(app).post('/api/tickets').set('Cookie', global.signin())
+        .send({
+            title: "test title",
+            price: -10
+        })
+        .expect(201)
 })
