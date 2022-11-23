@@ -6,6 +6,7 @@ import cookieSession from 'cookie-session'
 import { errorHandler, NotFoundError, currentUser } from "@myasticketing/common";
 
 import { createTicketRouter } from "./routes/new";
+import { showTicketRouter } from './routes/show';
 
 config()
 const app = express();
@@ -20,6 +21,7 @@ app.use(cookieSession({
 app.use(currentUser);
 
 app.use(createTicketRouter);
+app.use(showTicketRouter);
 
 
 app.all('*', async () => {

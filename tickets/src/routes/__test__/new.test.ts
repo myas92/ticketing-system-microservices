@@ -42,7 +42,6 @@ it('Returns an error if an invelid price is provided', async () => {
 it('Create a tickets with valid inputs', async () => {
     let tickets = await Ticket.find({});
     expect(tickets.length).toEqual(0);
-    console.log(tickets);
     const title = "test title";
     await request(app).post('/api/tickets').set('Cookie', global.signin())
         .send({
