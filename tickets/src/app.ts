@@ -8,6 +8,7 @@ import { errorHandler, NotFoundError, currentUser } from "@myasticketing/common"
 import { createTicketRouter } from "./routes/new";
 import { showTicketRouter } from './routes/show';
 import { indexTicketRouter } from './routes';
+import { updateTicketRouter } from './routes/update';
 
 config()
 const app = express();
@@ -24,6 +25,7 @@ app.use(currentUser);
 app.use(createTicketRouter);
 app.use(showTicketRouter);
 app.use(indexTicketRouter);
+app.use(updateTicketRouter);
 
 
 app.all('*', async () => {
