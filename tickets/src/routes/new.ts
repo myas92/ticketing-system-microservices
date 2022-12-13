@@ -1,6 +1,7 @@
 import express, { Request, Response } from 'express';
 import { requireAuth, validateRequest } from '@myasticketing/common'
 import { Ticket } from '../models/tickets';
+import { TicketCreatedPublisher } from '../events/ticket-created-publisher';
 const { body } = require('express-validator');
 
 const router = express.Router();
@@ -18,6 +19,12 @@ router.post('/api/tickets', requireAuth, [
         userId: req.currentUser!.id
     });
     await ticket.save();
+    await new TicketCreatedPublisher(client).publish({
+        id: ticket.id,
+        title: ticket.title,
+        price: ticket.price,
+        userId: ticket.userId
+    })
     res.status(201).send(ticket)
 })
 
