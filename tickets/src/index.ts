@@ -1,7 +1,7 @@
 
 import mongoose from "mongoose";
 import { app } from './app'
-
+import { natsWrapper } from "./nats-wrapper";
 
 const start = async () => {
   try {
@@ -21,7 +21,8 @@ const start = async () => {
 
     }
     else{
-      console.log(process.env.MONGO_URI)
+      console.log(process.env.MONGO_URI);
+      await natsWrapper.connect('ticketing', '134sf', 'http://nats-srv:4222')
       await mongoose.connect(process.env.MONGO_URI);
 
     }
