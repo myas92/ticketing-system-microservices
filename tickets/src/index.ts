@@ -15,14 +15,22 @@ const start = async () => {
     console.log("----------------------")
     console.log(process.env.NODE_ENV)
     console.log("----------------------")
-     if(process.env.NODE_ENV=='dev') {
+    if (process.env.NODE_ENV == 'dev') {
 
       await mongoose.connect('mongodb://localhost:27017/auth');
 
     }
-    else{
+    else {
       console.log(process.env.MONGO_URI);
-      await natsWrapper.connect('ticketing', '134sf', 'http://nats-srv:4222')
+      await natsWrapper.connect('ticketing', '134sf', 'http://nats-srv:4222');
+      //Close NATS connection
+      natsWrapper.client.on('close', () => {
+        console.log('NATS connection closed!');
+        process.exit();
+      })
+      process.on('SIGINT', () => natsWrapper.client.close());
+      process.on('SIGTERM', () => natsWrapper.client.close());
+      
       await mongoose.connect(process.env.MONGO_URI);
 
     }
