@@ -1,7 +1,6 @@
 import nats, { Stan } from 'node-nats-streaming'
 
 class NatsWrapper {
-
     private _client?: Stan;
     get client(){
         if(!this._client){
