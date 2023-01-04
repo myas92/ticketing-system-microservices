@@ -8,6 +8,7 @@ class NatsWrapper {
         }
         return this._client;
     }
+    
     connect(clusterId: string, clientId: string, url: string) {
         this._client = nats.connect(clusterId, clientId, { url });
         return new Promise((resolve, reject) => {
