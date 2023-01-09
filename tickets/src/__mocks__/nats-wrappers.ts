@@ -3,5 +3,6 @@ export const natsWrapper = {
       publish: (subject: string, data: string, callback: () => void) => {
         callback();
       },
+      
     },
   };
