@@ -31,6 +31,7 @@ req.currentUser = payload;
 ```
 
 
+
 ## Declare a global function for test
 ```js
 // test/setup.ts
