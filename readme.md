@@ -80,6 +80,7 @@ curl ipconfig.io/country
 
 # Start 
 
+
 ```bash
 minikube start
 skaffold dev
@@ -185,7 +186,7 @@ With NPM, create a  public organization add put the code in this organization
 ```
 @orginzation-name/package-name
 ```
-2- login 
+2- login `yaserahmadi`
 ```
 npm login
 ```
