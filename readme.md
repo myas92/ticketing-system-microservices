@@ -2,7 +2,7 @@
 
 
 
-## Usefull Commands Typescript
+## Useful Commands Typescript
 
 - Typescript
 
@@ -61,7 +61,7 @@ kubectl get pods -n ingress-nginx -w
 ```bash
 kubectl get pods
 kubectl get services
-kubctl get depoloyment
+kubctl get deployment
 ````
 
 - Update Pod based on Dockerhub Image
@@ -149,7 +149,7 @@ Pull to mongo in minbikube docker if you have error (can not pull the image yase
 git pull yaserahmadi/mongo
 ```
 
-## Check Ingress status befor run the project
+## Check Ingress status before run the project
 ```
 kubectl get pods -n ingress-nginx
 ````
@@ -179,12 +179,12 @@ env:
     key: NODE_ENV
 ```
 
-## Share Common Codes between Microservices
+## Share Common Codes between Micro-services
 With NPM, create a  public organization add put the code in this organization
 
 1- Select a valid name for package
 ```
-@orginzation-name/package-name
+@organization-name/package-name
 ```
 2- login `yaserahmadi`
 ```
