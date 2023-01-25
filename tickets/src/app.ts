@@ -5,10 +5,10 @@ import { json } from "body-parser";
 import cookieSession from 'cookie-session'
 import { errorHandler, NotFoundError, currentUser } from "@myasticketing/common";
 
-import { createTicketRouter } from "./routes/new";
-import { showTicketRouter } from './routes/show';
-import { indexTicketRouter } from './routes';
-import { updateTicketRouter } from './routes/update';
+import { indexOrderRouter } from './routes/index';
+import { newOrderRouter } from "./routes/new";
+import { showOrderRouter } from './routes/show';
+import { updateOrderRouter } from './routes/update';
 
 config()
 const app = express();
@@ -22,10 +22,10 @@ app.use(cookieSession({
 
 app.use(currentUser);
 
-app.use(createTicketRouter);
-app.use(showTicketRouter);
-app.use(indexTicketRouter);
-app.use(updateTicketRouter);
+app.use(indexOrderRouter);
+app.use(newOrderRouter);
+app.use(showOrderRouter);
+app.use(updateOrderRouter);
 
 
 app.all('*', async () => {

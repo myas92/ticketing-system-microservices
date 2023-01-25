@@ -10,4 +10,4 @@ router.get('/api/tickets', async (req: Request, res: Response) => {
 })
 
 
-export { router as indexTicketRouter }
+export { router as indexOrderRouter }
