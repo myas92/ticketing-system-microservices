@@ -7,6 +7,8 @@ interface OrderAttrs {
   ticket: TicketDoc;
 }
 
+
+
 interface OrderDoc extends mongoose.Document {
   userId: string;
   status: string;
