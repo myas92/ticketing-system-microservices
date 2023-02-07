@@ -165,6 +165,7 @@ kubectl create secret generic env --from-literal=NODE_ENV=KUBER
 ```
 update `auth-depl.yaml` file
 
+
 ```
 env:
 - name: JWT_KEY
