@@ -185,6 +185,11 @@ env:
 ## Share Common Codes between Micro-services
 With NPM, create a  public organization add put the code in this organization
 
+**Note**: registry npm
+```
+npm set registry https://registry.npmjs.com/
+```
+
 1- Select a valid name for package
 ```
 @organization-name/package-name
