@@ -48,3 +48,5 @@ it('returns an error if the ticket is already reserved', async () => {
       .send({ ticketId: ticket.id })
       .expect(201);
   });
+
+  it.todo('emit an order created event')
